@@ -4,7 +4,7 @@ The original CPP code is in: https://github.com/martinpiper/C64Public/tree/maste
 
 This was compiled on Windows (note the paths) with emscripten using:
 ```
-emcc -o hello.html -s EXPORTED_RUNTIME_METHODS=["callMain"] -s INVOKE_RUN=0 -s STACK_SIZE=1048576 c:\work\c64\Compression\main.cpp c:\work\c64\Common\ParamToNum.cpp c:\work\c64\Compression\Compress.cpp c:\work\c64\Compression\CompressE.cpp c:\work\c64\Compression\CompressRLE.cpp c:\work\c64\Compression\CompressU.cpp c:\work\c64\Compression\CompressV.cpp c:\work\c64\Compression\Decompress.cpp c:\work\c64\Compression\DecompressE.cpp c:\work\c64\Compression\DecompressU.cpp
+emcc -O3 -o hello.html -s EXPORTED_RUNTIME_METHODS=["callMain"] -s INVOKE_RUN=0 -s STACK_SIZE=1048576 c:\work\c64\Compression\main.cpp c:\work\c64\Common\ParamToNum.cpp c:\work\c64\Compression\Compress.cpp c:\work\c64\Compression\CompressE.cpp c:\work\c64\Compression\CompressRLE.cpp c:\work\c64\Compression\CompressU.cpp c:\work\c64\Compression\CompressV.cpp c:\work\c64\Compression\Decompress.cpp c:\work\c64\Compression\DecompressE.cpp c:\work\c64\Compression\DecompressU.cpp
 ```
 
 Since INVOKE_RUN=0 is used this stops the Wasm main being called on page load. Note the STACK_SIZE is quite large and may need to be larger if large prg files or expensive compression options are used.

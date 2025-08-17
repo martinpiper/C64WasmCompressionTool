@@ -28,3 +28,5 @@ For example this will compress a foo.prg to foocompressed.prg and call the start
 ```
  -c64mu "foo.prg" "foocompressed.prg" $400
 ```
+
+There are other options for setting the processor port, choosing border flash, setting top of memory etc.

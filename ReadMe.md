@@ -17,3 +17,14 @@ File data can be created by the page, main called with arguments, and the output
 	Module.callMain(["-c", "foo.txt" , "foo.cmp"])
 	FS.readFile("foo.cmp")
 ```
+
+To display help use command line arguments: -h
+
+For best (compression size and decompression speed) self extraction prg options use:
+```
+ -c64mu <input file> <outfile file> <run address> [start address] [skip start bytes]
+```
+For example this will compress a foo.prg to foocompressed.prg and call the start address at hex $400:
+```
+ -c64mu "foo.prg" "foocompressed.prg" $400
+```

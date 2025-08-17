@@ -1,4 +1,4 @@
-Acces this with: https://martinpiper.github.io/C64WasmCompressionTool/hello.html
+Access this with: https://martinpiper.github.io/C64WasmCompressionTool/hello.html
 
 The original CPP code is in: https://github.com/martinpiper/C64Public/tree/master/Compression
 

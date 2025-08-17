@@ -13,8 +13,8 @@ When the page loads, open the browser debug console and execute commands to test
 
 File data can be created by the page, main called with arguments, and the output file data read with javascript like:
 ```
-	FS.createDataFile("/","foo.txt","test data",true,true,true)
-	Module.callMain(["-c", "foo.txt" , "foo.cmp"])
+	FS.createDataFile("/","foo.txt","test data that can be compressed because it uses test data and that can be compressed",true,true,true)
+	Module.callMain(["-cu", "foo.txt" , "foo.cmp"])
 	FS.readFile("foo.cmp")
 ```
 

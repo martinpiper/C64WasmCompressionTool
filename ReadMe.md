@@ -1,4 +1,4 @@
-Access the bare minimum C64 compression tool with: <https://martinpiper.github.io/C64WasmCompressionTool/C64CompressToolExample.html>
+Access the minimal C64 compression tool with: <https://martinpiper.github.io/C64WasmCompressionTool/C64CompressToolExample.html>
 
 The actual work is done by function compressFile()
 

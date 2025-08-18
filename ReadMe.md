@@ -1,4 +1,7 @@
-Access the Wasm test page with: https://martinpiper.github.io/C64WasmCompressionTool/hello.html
+Access the bare minimum C64 compression tool with: https://martinpiper.github.io/C64WasmCompressionTool/C64CompressToolExample.html
+The actual work is done by function compressFile()
+
+Access the old Wasm test page with: https://martinpiper.github.io/C64WasmCompressionTool/hello.html
 
 The original CPP code is in: https://github.com/martinpiper/C64Public/tree/master/Compression
 
@@ -9,7 +12,7 @@ emcc -O3 -o hello.html -s EXPORTED_RUNTIME_METHODS=["callMain"] -s INVOKE_RUN=0 
 
 Since INVOKE_RUN=0 is used this stops the Wasm main being called on page load. Note the STACK_SIZE is quite large and may need to be larger if large prg files or expensive compression options are used.
 
-When the page loads, open the browser debug console and execute commands to test the compression tool.
+When the Wasm test page (hello.html) loads, open the browser debug console and execute commands to test the compression tool.
 
 File data can be created by the page, main called with arguments, and the output file data read with javascript like:
 ```

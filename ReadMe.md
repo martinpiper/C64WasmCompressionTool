@@ -1,9 +1,10 @@
-Access the bare minimum C64 compression tool with: https://martinpiper.github.io/C64WasmCompressionTool/C64CompressToolExample.html
+Access the bare minimum C64 compression tool with: <https://martinpiper.github.io/C64WasmCompressionTool/C64CompressToolExample.html>
+
 The actual work is done by function compressFile()
 
-Access the old Wasm test page with: https://martinpiper.github.io/C64WasmCompressionTool/hello.html
+Access the old Wasm test page with: <https://martinpiper.github.io/C64WasmCompressionTool/hello.html>
 
-The original CPP code is in: https://github.com/martinpiper/C64Public/tree/master/Compression
+The original CPP code is in: <https://github.com/martinpiper/C64Public/tree/master/Compression>
 
 This was compiled on Windows (note the paths) with emscripten using:
 ```

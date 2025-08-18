@@ -136,6 +136,8 @@
 		</br><input type="file" id="fileInput" accept=".prg">
 		</br>Jump address as hex or decimal number<input type="text" id="jumpAddress" placeholder="e.g. 2061, $080d, $1000, $c000 ..." value="$080d">
 		</br>ProcessorPort (memory location $01) value as hex or decimal number, or leave empty to remove this option and use default all RAM mode<input type="text" id="processorPort" placeholder="e.g. $37" value="$37">
+		</br>Compression options<input type="text" id="compressionOptions" placeholder="e.g. mbu" value="mbu">
+		'm' for max mode allowing $200-$fff8 to be used, 'b' for border flash, 'u' for ultimate mode, 'r' for RLE, 'v' for very good compression but slow decompression...
 		</br><button id="compressBtn" onclick="compressFile()" disabled>Compress File</button>
 		<div id="downloadButtons"></div>
 
@@ -213,6 +215,7 @@
 			<!--Setup the input data, gets the input file bytes and run address-->
 			const jumpAddress = document.getElementById('jumpAddress').value;
 			const processorPort = document.getElementById('processorPort').value;
+			const compressionOptions = document.getElementById('compressionOptions').value;
 
 			const inputlFilename = selectedFile.name;
 			const safeName = inputlFilename.replace(/\.[^/.]+$/, '');
@@ -224,9 +227,9 @@
 			<!--Interfaces the Wasm compression command line tool, creates a temporary in-memory file, runs the command line, gets the output file data -->
 			FS.createDataFile("/","foo.prg",inputData,true,true,true)
 			if (processorPort) {
-				Module.callMain(["-pp" , processorPort , "-c64mbu", "foo.prg" , "foocmp.prg" , jumpAddress])
+				Module.callMain(["-pp" , processorPort , "-c64"+compressionOptions, "foo.prg" , "foocmp.prg" , jumpAddress])
 			} else {
-				Module.callMain(["-c64mbu", "foo.prg" , "foocmp.prg" , jumpAddress])
+				Module.callMain(["-c64"+compressionOptions, "foo.prg" , "foocmp.prg" , jumpAddress])
 			}
 			outputData = FS.readFile("foocmp.prg")
 

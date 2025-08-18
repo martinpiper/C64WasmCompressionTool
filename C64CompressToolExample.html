@@ -3,7 +3,7 @@
     <head>
         <meta charset=utf-8>
         <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
-        <title>Emscripten-Generated Code</title>
+        <title>C64 LZMPi Compression tool</title>
         <style>
             body {
                 font-family: arial;
@@ -134,7 +134,8 @@
         </div>
 		</br>All file data is stored in the browser, nothing is sent to the server.
 		</br><input type="file" id="fileInput" accept=".prg">
-		</br>Jump address as hex or decimal number<input type="text" id="jumpAddress" placeholder="e.g. 2061, $080d, $1000, $c000..." value="$080d">
+		</br>Jump address as hex or decimal number<input type="text" id="jumpAddress" placeholder="e.g. 2061, $080d, $1000, $c000 ..." value="$080d">
+		</br>ProcessorPort (memory location $01) value as hex or decimal number, or leave empty to remove this option<input type="text" id="processorPort" placeholder="e.g. $37" value="$37">
 		</br><button id="compressBtn" onclick="compressFile()" disabled>Compress File</button>
 		<div id="downloadButtons"></div>
 
@@ -211,6 +212,7 @@
 			document.getElementById('compressBtn').disabled = true;
 			<!--Setup the input data, gets the input file bytes and run address-->
 			const jumpAddress = document.getElementById('jumpAddress').value;
+			const processorPort = document.getElementById('processorPort').value;
 
 			const inputlFilename = selectedFile.name;
 			const safeName = inputlFilename.replace(/\.[^/.]+$/, '');
@@ -221,7 +223,11 @@
 
 			<!--Interfaces the Wasm compression command line tool, creates a temporary in-memory file, runs the command line, gets the output file data -->
 			FS.createDataFile("/","foo.prg",inputData,true,true,true)
-			Module.callMain(["-c64mbu", "foo.prg" , "foocmp.prg" , jumpAddress])
+			if (processorPort) {
+				Module.callMain(["-pp" , processorPort , "-c64mbu", "foo.prg" , "foocmp.prg" , jumpAddress])
+			} else {
+				Module.callMain(["-c64mbu", "foo.prg" , "foocmp.prg" , jumpAddress])
+			}
 			outputData = FS.readFile("foocmp.prg")
 
 			<!--Provides a download link for the output file-->
